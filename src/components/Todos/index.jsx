@@ -1,16 +1,24 @@
 import React from 'react';
-import { setTodos, getTodos } from '../Utils/StorageApi';
+import StorageApi from '../Utils/StorageApi';
 
 class Todos extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {todos: []}
+    this.getAllTodos = this.getAllTodos.bind(this);
+  }
+
+  getChildContext() {
+    return {getAllTodos: this.getAllTodos};
   }
 
   componentWillMount() {
-    setTodos([{'num': 1}, {'num': 2}]);
-    this.setState({todos: getTodos()});
+    this.getAllTodos();
+  }
+
+  getAllTodos() {
+    this.setState({todos: StorageApi.getTodos()});
   }
 
   render() {
@@ -20,7 +28,15 @@ class Todos extends React.Component {
         Todos
         {
           this.state.todos.map((t, index) => {
-            return <p key={index}>{t.num}</p>
+            return (
+              <div key={index}>
+                <p>{t.id}</p>
+                <p>{t.name}</p>
+                <p>{t.description}</p>
+                <p>{t.date}</p>
+                <p>{t.priority}</p>
+              </div>
+            )
           })
         }
         {this.props.edit}
@@ -28,5 +44,9 @@ class Todos extends React.Component {
     );
   }
 }
+
+Todos.childContextTypes = {
+  getAllTodos: React.PropTypes.func
+};
 
 export default Todos;

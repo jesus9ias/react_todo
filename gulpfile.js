@@ -29,8 +29,9 @@ gulp.task('build', function() {
 });
 
 gulp.task('serve', function() {
+  gulp.watch('./src/**/*.js', ['build']);
   gulp.watch('./src/**/*.jsx', ['build']);
   gulp.watch(['./src/**/*.scss'], ['sass']);
 })
 
-gulp.task('default', ['serve'])
+gulp.task('default', ['serve', 'build', 'sass'])
