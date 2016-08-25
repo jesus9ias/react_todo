@@ -35,6 +35,21 @@ class StorageApi {
     return todo.id;
   }
 
+  deleteTodo(index) {
+    let todos = this.getTodos();
+    todos.splice(index, 1);
+    this.setTodos(todos);
+  }
+
+  getTodo(id) {
+    let todos = this.getTodos();
+    let todo = todos.filter((obj, i) => {
+      obj.key = i;
+      return obj.id == id;
+    });
+    return todo[0];
+  }
+
   getKey(key) {
     return storage.gey(key);
   }

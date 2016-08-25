@@ -19,6 +19,10 @@ class NewTodo extends React.Component {
       date,
       priority
     });
+    this.refs.new_name.value = '';
+    this.refs.new_description.value = '';
+    this.refs.new_date.value = '';
+    this.refs.new_priority.value = '';
     this.context.getAllTodos();
   }
 

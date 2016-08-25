@@ -1,5 +1,6 @@
 import React from 'react';
 import StorageApi from '../Utils/StorageApi';
+import OneTodo from './OneTodo';
 
 class Todos extends React.Component {
 
@@ -7,6 +8,7 @@ class Todos extends React.Component {
     super(props);
     this.state = {todos: []}
     this.getAllTodos = this.getAllTodos.bind(this);
+    this.deleteOneTodo = this.deleteOneTodo.bind(this);
   }
 
   getChildContext() {
@@ -21,6 +23,11 @@ class Todos extends React.Component {
     this.setState({todos: StorageApi.getTodos()});
   }
 
+  deleteOneTodo(index) {
+    StorageApi.deleteTodo(index);
+    this.getAllTodos();
+  }
+
   render() {
     return (
       <div className="todos">
@@ -29,14 +36,13 @@ class Todos extends React.Component {
         {
           this.state.todos.map((t, index) => {
             return (
-              <div key={index}>
-                <p>{t.id}</p>
-                <p>{t.name}</p>
-                <p>{t.description}</p>
-                <p>{t.date}</p>
-                <p>{t.priority}</p>
-              </div>
-            )
+              <OneTodo
+                key={index}
+                index={index}
+                todo={t}
+                deleteOneTodo={this.deleteOneTodo}
+              />
+            );
           })
         }
         {this.props.edit}
