@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class Nav extends React.Component {
 
@@ -6,6 +7,8 @@ class Nav extends React.Component {
     return (
       <div className="nav">
         Nav
+
+        <Link to={`/`}>Home</Link>
       </div>
     );
   }
