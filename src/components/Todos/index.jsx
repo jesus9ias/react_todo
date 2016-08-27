@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import StorageApi from '../Utils/StorageApi';
 import OneTodo from './OneTodo';
 
@@ -6,35 +7,26 @@ class Todos extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {todos: []}
-    this.getAllTodos = this.getAllTodos.bind(this);
     this.deleteOneTodo = this.deleteOneTodo.bind(this);
   }
 
-  getChildContext() {
-    return {getAllTodos: this.getAllTodos};
-  }
-
   componentWillMount() {
-    this.getAllTodos();
-  }
-
-  getAllTodos() {
-    this.setState({todos: StorageApi.getTodos()});
+    this.context.getAllTodos();
   }
 
   deleteOneTodo(index) {
     StorageApi.deleteTodo(index);
-    this.getAllTodos();
+    this.context.getAllTodos();
   }
 
   render() {
     return (
       <div className="todos">
+        <Link to={`/todos/new`}>New todo</Link>
         {this.props.new}
         Todos
         {
-          this.state.todos.map((t, index) => {
+          this.context.todos.map((t, index) => {
             return (
               <OneTodo
                 key={index}
@@ -51,8 +43,9 @@ class Todos extends React.Component {
   }
 }
 
-Todos.childContextTypes = {
-  getAllTodos: React.PropTypes.func
+Todos.contextTypes = {
+  getAllTodos: React.PropTypes.func,
+  todos: React.PropTypes.array
 };
 
 export default Todos;

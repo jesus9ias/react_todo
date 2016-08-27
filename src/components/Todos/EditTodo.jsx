@@ -4,8 +4,8 @@ import StorageApi from '../Utils/StorageApi';
 class EditTodo extends React.Component {
   constructor(props) {
     super(props);
-    //this.state = {todo: {}};
     this.SetForm = this.SetForm.bind(this);
+    this.updateTodo = this.updateTodo.bind(this);
   }
 
   componentDidMount() {
@@ -20,11 +20,23 @@ class EditTodo extends React.Component {
 
   SetForm(id) {
     let todo = StorageApi.getTodo(id);
-    //this.setState({todo: todo});
     this.refs.edit_name.value = todo.name;
     this.refs.edit_description.value = todo.description;
     this.refs.edit_date.value = todo.date;
     this.refs.edit_priority.value = todo.priority;
+  }
+
+  updateTodo(e) {
+    e.preventDefault();
+    const { edit_name, edit_description, edit_date, edit_priority} = this.refs;
+    StorageApi.updateTodo({
+      id: this.props.params.id,
+      name: edit_name.value,
+      description: edit_description.value,
+      date: edit_date.value,
+      priority: edit_priority.value
+    });
+    this.context.getAllTodos();
   }
 
   render() {
@@ -32,7 +44,7 @@ class EditTodo extends React.Component {
       <div className="todo-edit">
         Edit Todo
 
-        <form>
+        <form onSubmit={this.updateTodo}>
           <label>ID</label>
           <p>{this.props.params.id}</p>
 
@@ -54,5 +66,9 @@ class EditTodo extends React.Component {
     );
   }
 }
+
+EditTodo.contextTypes = {
+  getAllTodos: React.PropTypes.func
+};
 
 export default EditTodo;

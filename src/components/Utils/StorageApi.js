@@ -50,6 +50,16 @@ class StorageApi {
     return todo[0];
   }
 
+  updateTodo(todo) {
+    let todos = this.getTodos();
+    todos.forEach((obj, i) => {
+      if (obj.id == todo.id) {
+        todos[i] = todo;
+        this.setTodos(todos);
+      }
+    });
+  }
+
   getKey(key) {
     return storage.gey(key);
   }
