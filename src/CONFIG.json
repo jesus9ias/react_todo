@@ -1,3 +1,15 @@
 {
-  "baseUrl": "http://localhost:3030"
+  "baseUrl": "http://localhost:3030",
+  "status": {
+    "1": "Inactive",
+    "2": "Active",
+    "3": "Canceled",
+    "4": "Finished",
+  },
+  "priorities": {
+    "1": "Low",
+    "2": "Medium",
+    "3": "High",
+    "4": "Extreme",
+  }
 }

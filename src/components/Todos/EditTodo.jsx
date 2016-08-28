@@ -19,22 +19,33 @@ class EditTodo extends React.Component {
   }
 
   SetForm(id) {
-    let todo = StorageApi.getTodo(id);
+    const todo = StorageApi.getTodo(id);
     this.refs.edit_name.value = todo.name;
     this.refs.edit_description.value = todo.description;
-    this.refs.edit_date.value = todo.date;
+    this.refs.edit_date_created.value = todo.date_created;
+    this.refs.edit_date_expiration.value = todo.date_expiration;
     this.refs.edit_priority.value = todo.priority;
+    this.refs.edit_status.value = todo.status;
   }
 
   updateTodo(e) {
     e.preventDefault();
-    const { edit_name, edit_description, edit_date, edit_priority} = this.refs;
+    const {
+      edit_name,
+      edit_description,
+      edit_date_created,
+      edit_date_expiration,
+      edit_priority,
+      edit_status
+    } = this.refs;
     StorageApi.updateTodo({
       id: this.props.params.id,
       name: edit_name.value,
       description: edit_description.value,
-      date: edit_date.value,
-      priority: edit_priority.value
+      date_created: edit_date_created.value,
+      date_expiration: edit_date_expiration.value,
+      priority: edit_priority.value,
+      status: edit_status.value,
     });
     this.context.getAllTodos();
   }
@@ -48,17 +59,33 @@ class EditTodo extends React.Component {
           <label>ID</label>
           <p>{this.props.params.id}</p>
 
-          <label>Name</label>
-          <input type="input" ref="edit_name" />
+          <label htmlFor="edit_name">Name</label>
+          <input type="input" id="edit_name" ref="edit_name" />
 
-          <label>Description</label>
-          <input type="input" ref="edit_description" />
+          <label htmlFor="edit_description">Description</label>
+          <input type="input" id="edit_description" ref="edit_description" />
 
-          <label>Date</label>
-          <input type="input" ref="edit_date" />
+          <label htmlFor="edit_date_created">Date created</label>
+          <input type="date" id="edit_date_created" ref="edit_date_created" />
 
-          <label>Priority</label>
-          <input type="input" ref="edit_priority" />
+          <label htmlFor="edit_date_expiration">Date expiration</label>
+          <input type="date" id="edit_date_expiration" ref="edit_date_expiration" />
+
+          <label htmlFor="edit_priority">Priority</label>
+          <select id="edit_priority" ref="edit_priority">
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+            <option value="4">Extreme</option>
+          </select>
+
+          <label htmlFor="edit_status">Status</label>
+          <select id="edit_status" ref="edit_status">
+            <option value="1">Inactive</option>
+            <option value="2">Active</option>
+            <option value="3">Canceled</option>
+            <option value="4">Finished</option>
+          </select>
 
           <input type="submit" value="Update" />
         </form>

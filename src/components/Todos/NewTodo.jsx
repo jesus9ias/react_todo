@@ -7,22 +7,27 @@ class NewTodo extends React.Component {
     this.saveTodo = this.saveTodo.bind(this);
   }
 
-  saveTodo(e) {
-    e.preventDefault();
+  saveTodo(event) {
+    event.preventDefault();
     const name = this.refs.new_name.value;
     const description = this.refs.new_description.value;
-    const date = this.refs.new_date.value;
+    const date_created = this.refs.new_date_created.value;
+    const date_expiration = this.refs.new_date_expiration.value;
     const priority = this.refs.new_priority.value;
+    const status = 2;
     StorageApi.createTodo({
       name,
       description,
-      date,
-      priority
+      date_created,
+      date_expiration,
+      priority,
+      status
     });
     this.refs.new_name.value = '';
     this.refs.new_description.value = '';
-    this.refs.new_date.value = '';
-    this.refs.new_priority.value = '';
+    this.refs.new_date_created.value = '';
+    this.refs.new_date_expiration.value = '';
+    this.refs.new_priority.value = 1;
     this.context.getAllTodos();
   }
 
@@ -32,17 +37,25 @@ class NewTodo extends React.Component {
         New Todo
 
         <form onSubmit={this.saveTodo}>
-          <label>Name</label>
-          <input ref="new_name" />
+          <label htmlFor="new_name">Name</label>
+          <input type="text" id="new_name" ref="new_name" />
 
-          <label>Description</label>
-          <input ref="new_description" />
+          <label htmlFor="new_description">Description</label>
+          <textarea id="new_description" ref="new_description"></textarea>
 
-          <label>Date</label>
-          <input ref="new_date" />
+          <label htmlFor="new_date_created">Date created</label>
+          <input type="date" id="new_date_created" ref="new_date_created" />
 
-          <label>Priority</label>
-          <input ref="new_priority" />
+          <label htmlFor="new_date_expiration">Date expiration</label>
+          <input type="date" id="new_date_expiration" ref="new_date_expiration" />
+
+          <label htmlFor="new_priority">Priority</label>
+          <select id="new_priority" ref="new_priority">
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+            <option value="4">Extreme</option>
+          </select>
 
           <input type="submit" value="Save" />
         </form>

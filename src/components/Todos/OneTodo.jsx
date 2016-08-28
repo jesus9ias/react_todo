@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import StorageApi from '../Utils/StorageApi';
+import { priorities, status } from '../../CONFIG';
 
 class OneTodo extends React.Component {
 
@@ -19,8 +20,10 @@ class OneTodo extends React.Component {
         <p>{this.props.todo.id}</p>
         <p>{this.props.todo.name}</p>
         <p>{this.props.todo.description}</p>
-        <p>{this.props.todo.date}</p>
-        <p>{this.props.todo.priority}</p>
+        <p>{this.props.todo.date_created}</p>
+        <p>{this.props.todo.date_expiration}</p>
+        <p>{priorities[this.props.todo.priority]}</p>
+        <p>{status[this.props.todo.status]}</p>
         <Link to={`/todos/${this.props.todo.id}`}>Edit</Link>
         <input type="button" onClick={this.deleteOneTodo} value="Delete" />
       </div>
