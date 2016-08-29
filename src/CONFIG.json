@@ -1,5 +1,6 @@
 {
   "baseUrl": "http://localhost:3030",
+  "cdnUrl": "http://localhost:3030/assets",
   "status": {
     "1": "Inactive",
     "2": "Active",

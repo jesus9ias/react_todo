@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { cdnUrl } from '../../CONFIG';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -8,13 +9,13 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <div className="nav">
-        Nav
-
-        <Link to={`/`}>Home</Link>
-
-        <button onClick={this.context.openSidenav}>Toggle</button>
-      </div>
+      <nav className="nav">
+        <button
+          className="btn btn-icon btn-menu"
+          onClick={this.context.openSidenav}>
+        </button>
+        <Link to={`/`} className="nav-title">React TODOS</Link>
+      </nav>
     );
   }
 }

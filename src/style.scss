@@ -1,2 +1,8 @@
+@import 'components/common/globals';
+@import 'components/common/colors';
+@import 'components/common/mixins';
+@import 'components/common/buttons';
+
 @import 'components/app';
-@import 'components/home/home';
+@import 'components/Home/home';
+@import 'components/Nav/nav';

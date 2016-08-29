@@ -1,0 +1,13 @@
+.btn {
+  border: 0px;
+  background: none;
+}
+
+.btn-menu{
+  background: url('#{$cdnUrl}/img/menu_white.png') no-repeat center;
+  background-size: cover;
+  height: 18px;
+  &:hover{
+    background: url('#{$cdnUrl}/img/menu_blue.png');
+  }
+}

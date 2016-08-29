@@ -5,20 +5,16 @@ class SideNav extends React.Component {
 
   render() {
     return (
-      <div className="sideNav">
-        SideNav
-
-        <MegaSidenav
-          title="React TODO"
-          items={[]}
-          open={this.props.isOpenSidenav}
-          close={this.context.closeSidenav}
-          useClose={true}
-          backdrop={true}
-          orientation={'left'}
-        >
-        </MegaSidenav>
-      </div>
+      <MegaSidenav
+        title="React TODO"
+        items={[]}
+        open={this.props.isOpenSidenav}
+        close={this.context.closeSidenav}
+        useClose={true}
+        backdrop={true}
+        orientation={'left'}
+      >
+      </MegaSidenav>
     );
   }
 }
