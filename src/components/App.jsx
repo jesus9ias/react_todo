@@ -25,8 +25,8 @@ class App extends React.Component {
     };
   }
 
-  getAllTodos() {
-    this.setState({todos: StorageApi.getTodos()});
+  getAllTodos(status_filter = [], priorities_filter = []) {
+    this.setState({todos: StorageApi.getTodos(status_filter, priorities_filter)});
   }
 
   openSidenav() {
