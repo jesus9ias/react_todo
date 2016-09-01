@@ -41,7 +41,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Nav />
-        <SideNav isOpenSidenav={this.state.isOpenSidenav} />
+        <SideNav isOpenSidenav={this.state.isOpenSidenav} todos={this.state.todos} />
         {this.props.children}
       </div>
     );

@@ -6,18 +6,13 @@ class SideNav extends React.Component {
 
   constructor(props) {
     super(props);
-    this.getTodos = this.getTodos.bind(this);
     this.state = {
       todos: []
     };
   }
 
-  componentWillMount() {
-    this.getTodos();
-  }
-
-  getTodos() {
-    this.setState({ todos: StorageApi.getTodos([2], [3,4]) });
+  componentWillReceiveProps() {
+    this.setState({ todos: StorageApi.useFilters(this.props.todos, [2], [3,4]) });
   }
 
   render() {

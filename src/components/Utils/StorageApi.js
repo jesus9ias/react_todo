@@ -19,13 +19,16 @@ class StorageApi {
 
   getTodos(status_filter = [], priorities_filter = []) {
     let todos = this._parse(storage.get('todos')) || INITIAL_STATE.todos;
-
     if (status_filter.length > 0 || priorities_filter.length > 0) {
-      todos = todos.filter((obj, i) => {
-        return status_filter.indexOf(parseInt(obj.status)) != -1 || priorities_filter.indexOf(parseInt(obj.priority)) != -1;
-      });
+      todos = this.useFilters(todos, status_filter, priorities_filter);
     }
+    return todos;
+  }
 
+  useFilters(todos, status_filter = [], priorities_filter = []) {
+    todos = todos.filter((obj, i) => {
+      return status_filter.indexOf(parseInt(obj.status)) != -1 || priorities_filter.indexOf(parseInt(obj.priority)) != -1;
+    });
     return todos;
   }
 
