@@ -1,0 +1,11 @@
+.sidenav-link{
+  margin: 5px;
+  padding: 5px;
+  @include rounded(5px);
+  -moz-box-shadow: 10px 10px 9px -9px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 9px -9px rgba(0,0,0,0.75);
+  background: #f5f5f5;
+  a {
+    display: block;
+  }
+}

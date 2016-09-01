@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import {MegaSidenav, SidenavItem} from 'react-mega-sidenav';
 import StorageApi from '../Utils/StorageApi';
 
@@ -29,8 +30,8 @@ class SideNav extends React.Component {
       {
         this.state.todos.map((t, index) => {
           return (
-            <div key={index}>
-              <p>{t.name}</p>
+            <div key={index} className="sidenav-link">
+              <Link to={`/todos/${t.id}`}>{t.name}</Link>
             </div>
           );
         })
