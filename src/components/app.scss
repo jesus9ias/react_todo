@@ -1,6 +1,7 @@
 html,
 body {
   @include calcHeight(100%, 0px);
+  margin: 0px;
 }
 
 body {
@@ -20,4 +21,9 @@ p {
 
 a {
   text-decoration: none;
+}
+
+*:active,
+*:focus {
+  outline: 0px;
 }

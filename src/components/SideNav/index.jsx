@@ -30,9 +30,7 @@ class SideNav extends React.Component {
       {
         this.state.todos.map((t, index) => {
           return (
-            <div key={index} className="sidenav-link">
-              <Link to={`/todos/${t.id}`}>{t.name}</Link>
-            </div>
+            <Link key={index} className="sidenav-link" to={`/todos/${t.id}`}>{t.name}</Link>
           );
         })
       }

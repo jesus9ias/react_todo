@@ -1,13 +1,13 @@
 .nav {
   @include flexRow;
   background: $greenDark;
-  width: 100%;
   padding: 10px;
   .nav-title {
-    color: $blue_ocean;
+    color: $blueOcean;
+    font-size: $titleSize;
     margin-left: 10px;
     &:hover {
-      color: $blue_light;
+      color: $blueLight;
     }
   }
 }

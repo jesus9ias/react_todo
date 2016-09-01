@@ -25,6 +25,10 @@ class App extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.getAllTodos();
+  }
+
   getAllTodos(status_filter = [], priorities_filter = []) {
     this.setState({todos: StorageApi.getTodos(status_filter, priorities_filter)});
   }
