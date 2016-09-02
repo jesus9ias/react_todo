@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import classnames from 'classnames';
 import StorageApi from '../Utils/StorageApi';
 import { priorities, status, cdnUrl } from '../../CONFIG';
+import moment from 'moment';
 
 class OneTodo extends React.Component {
 
@@ -19,12 +20,13 @@ class OneTodo extends React.Component {
     const ELEMENT_CLASS = classnames(`section-element c4 element-${this.props.todo.status}`);
     const PRIORITY_CLASS = classnames(`priority priority-${this.props.todo.status}`);
     const STATUS_CLASS = classnames(`status status-${this.props.todo.status}`);
+    let dateCreated = moment(this.props.todo.date_created).fromNow();
+    let dateExpiration = moment(this.props.todo.date_expiration).fromNow();
     return (
       <div className={ELEMENT_CLASS}>
         <p className="section-element-title">{this.props.todo.name}</p>
         <p className="section-element-subtitle">{this.props.todo.description}</p>
-        <p>{this.props.todo.date_created}</p>
-        <p>{this.props.todo.date_expiration}</p>
+        <p>Created {dateCreated} and expires {dateExpiration}</p>
         <p className={PRIORITY_CLASS}>{priorities[this.props.todo.priority]}</p>
         <p className={STATUS_CLASS}>{status[this.props.todo.status]}</p>
         <Link className="section-element-button" to={`/todos/${this.props.todo.id}`}>
