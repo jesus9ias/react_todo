@@ -19,12 +19,12 @@ class Home extends React.Component {
       <section className="app">
         <h1 className="section-title">Home</h1>
 
-        <div className="section-block">
-          <Link className="section-element" to={`todos`}>
+        <div className="section-block home">
+          <Link className="section-element home-element" to={`todos`}>
             <h2 className="section-element-title">View Todos</h2>
             <p className="section-element-subtitle">{this.state.todos.length} active TODOS</p>
           </Link>
-          <Link className="section-element" to={`settings`}>
+          <Link className="section-element home-element" to={`settings`}>
             <h2 className="section-element-title">View Settings</h2>
           </Link>
         </div>

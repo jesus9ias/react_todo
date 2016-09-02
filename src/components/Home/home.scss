@@ -1,1 +1,9 @@
+.home {
+  justify-content: center;
+}
 
+.home-element {
+  @include flex(0 0 23%);
+  margin: 10px 1%;
+  box-sizing: border-box;
+}

@@ -17,7 +17,9 @@ class OneTodo extends React.Component {
   }
 
   render() {
-    const ELEMENT_CLASS = classnames(`section-element c4 element-${this.props.todo.status}`);
+    const ELEMENT_CLASS = classnames(`section-element todo element-${this.props.todo.status}`, {
+      'todo-late': moment(this.props.todo.date_expiration) < moment() && this.props.todo.status == 2
+    });
     const PRIORITY_CLASS = classnames(`priority priority-${this.props.todo.status}`);
     const STATUS_CLASS = classnames(`status status-${this.props.todo.status}`);
     let dateCreated = moment(this.props.todo.date_created).fromNow();
