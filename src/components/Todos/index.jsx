@@ -86,7 +86,7 @@ class Todos extends React.Component {
         <div className="section-block">
           <Link to={`/todos/new`}>New todo</Link>
         </div>
-        <div className="section-block">
+        <div className="section-block wrapped">
           {
             this.context.todos.map((t, index) => {
               return (

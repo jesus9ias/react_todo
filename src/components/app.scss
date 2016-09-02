@@ -27,3 +27,13 @@ a {
 *:focus {
   outline: 0px;
 }
+
+.wrapped {
+  flex-wrap: wrap;
+}
+
+.c4 {
+  @include flex(1 0 23%);
+  margin: 10px 1%;
+  box-sizing: border-box;
+}

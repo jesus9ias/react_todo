@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import classnames from 'classnames';
 import StorageApi from '../Utils/StorageApi';
-import { priorities, status } from '../../CONFIG';
+import { priorities, status, cdnUrl } from '../../CONFIG';
 
 class OneTodo extends React.Component {
 
@@ -16,7 +16,7 @@ class OneTodo extends React.Component {
   }
 
   render() {
-    const ELEMENT_CLASS = classnames(`section-element element-${this.props.todo.status}`);
+    const ELEMENT_CLASS = classnames(`section-element c4 element-${this.props.todo.status}`);
     const PRIORITY_CLASS = classnames(`priority priority-${this.props.todo.status}`);
     const STATUS_CLASS = classnames(`status status-${this.props.todo.status}`);
     return (
@@ -27,8 +27,12 @@ class OneTodo extends React.Component {
         <p>{this.props.todo.date_expiration}</p>
         <p className={PRIORITY_CLASS}>{priorities[this.props.todo.priority]}</p>
         <p className={STATUS_CLASS}>{status[this.props.todo.status]}</p>
-        <Link to={`/todos/${this.props.todo.id}`}></Link>
-        <a onClick={this.deleteOneTodo} value="Delete"></a>
+        <Link className="section-element-button" to={`/todos/${this.props.todo.id}`}>
+          <img src={`${cdnUrl}/img/right-arrow.png`} />
+        </Link>
+        <a className="section-element-button" onClick={this.deleteOneTodo}>
+          <img src={`${cdnUrl}/img/cancel_black.png`} />
+        </a>
       </div>
     );
   }
