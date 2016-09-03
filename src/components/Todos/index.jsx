@@ -62,29 +62,30 @@ class Todos extends React.Component {
     return (
       <section className="todos">
         <h1 className="section-title">TODOS</h1>
-        <div className="section-block">
-          {this.props.new}
-        </div>
-        <div className="section-block">
+        <div className="section-block filters-block">
           <div className="filters">
-            <p>Status Filters</p>
+            <p className="filter-title">Status Filters</p>
             <label>Inactive <input type="checkbox" ref="status_inactive" onClick={this.getFilters} /></label>
             <label>Active <input type="checkbox" ref="status_active" onClick={this.getFilters} /></label>
             <label>Canceled <input type="checkbox" ref="status_canceled" onClick={this.getFilters} /></label>
             <label>Finished <input type="checkbox" ref="status_finished" onClick={this.getFilters} /></label>
           </div>
-        </div>
-        <div className="section-block">
           <div className="filters">
-            <p>Priorities Filters</p>
+            <p className="filter-title">Priorities Filters</p>
             <label>Low <input type="checkbox" ref="priorities_low" onClick={this.getFilters} /></label>
             <label>Medium <input type="checkbox" ref="priorities_medium" onClick={this.getFilters} /></label>
             <label>High <input type="checkbox" ref="priorities_high" onClick={this.getFilters} /></label>
-            <label>Extrem <input type="checkbox" ref="priorities_extreme" onClick={this.getFilters} /></label>
+            <label>Extreme <input type="checkbox" ref="priorities_extreme" onClick={this.getFilters} /></label>
           </div>
         </div>
         <div className="section-block">
-          <Link to={`/todos/new`}>New todo</Link>
+          <Link className="btn btn-ok" to={`/todos/new`}>New todo</Link>
+        </div>
+        <div className="section-block">
+          {this.props.new}
+        </div>
+        <div className="section-block">
+          {this.props.edit}
         </div>
         <div className="section-block wrapped">
           {
@@ -99,9 +100,6 @@ class Todos extends React.Component {
               );
             })
           }
-        </div>
-        <div className="section-block">
-          {this.props.edit}
         </div>
       </section>
     );

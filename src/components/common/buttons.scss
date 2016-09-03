@@ -3,7 +3,7 @@
   background: none;
 }
 
-.btn-menu{
+.btn-menu {
   background: url('#{$cdnUrl}/img/menu_white.png') no-repeat center;
   background-size: cover;
   height: 34px;
@@ -11,5 +11,16 @@
   &:hover{
     background: url('#{$cdnUrl}/img/menu_blue.png');
     background-size: cover;
+  }
+}
+
+.btn-ok {
+  @include rounded(5px);
+  background: $blueOcean;
+  padding: 5px;
+  margin: 5px;
+  color: white;
+  &:hover {
+    background: $blueLight;
   }
 }

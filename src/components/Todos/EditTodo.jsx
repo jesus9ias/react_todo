@@ -53,41 +53,39 @@ class EditTodo extends React.Component {
   render() {
     return (
       <div className="todo-edit">
-        Edit Todo
+        <form className="form" onSubmit={this.updateTodo}>
+          <label className="form-label">ID</label>
+          <p className="form-text">{this.props.params.id}</p>
 
-        <form onSubmit={this.updateTodo}>
-          <label>ID</label>
-          <p>{this.props.params.id}</p>
+          <label className="form-label" htmlFor="edit_name">Name</label>
+          <input className="form-input" type="input" id="edit_name" ref="edit_name" />
 
-          <label htmlFor="edit_name">Name</label>
-          <input type="input" id="edit_name" ref="edit_name" />
+          <label className="form-label" htmlFor="edit_description">Description</label>
+          <input className="form-input" type="input" id="edit_description" ref="edit_description" />
 
-          <label htmlFor="edit_description">Description</label>
-          <input type="input" id="edit_description" ref="edit_description" />
+          <label className="form-label" htmlFor="edit_date_created">Date created</label>
+          <input className="form-input" type="date" id="edit_date_created" ref="edit_date_created" />
 
-          <label htmlFor="edit_date_created">Date created</label>
-          <input type="date" id="edit_date_created" ref="edit_date_created" />
+          <label className="form-label" htmlFor="edit_date_expiration">Date expiration</label>
+          <input className="form-input" type="date" id="edit_date_expiration" ref="edit_date_expiration" />
 
-          <label htmlFor="edit_date_expiration">Date expiration</label>
-          <input type="date" id="edit_date_expiration" ref="edit_date_expiration" />
-
-          <label htmlFor="edit_priority">Priority</label>
-          <select id="edit_priority" ref="edit_priority">
+          <label className="form-label" htmlFor="edit_priority">Priority</label>
+          <select id="edit_priority" className="form-select" ref="edit_priority">
             <option value="1">Low</option>
             <option value="2">Medium</option>
             <option value="3">High</option>
             <option value="4">Extreme</option>
           </select>
 
-          <label htmlFor="edit_status">Status</label>
-          <select id="edit_status" ref="edit_status">
+          <label className="form-label" htmlFor="edit_status">Status</label>
+          <select id="edit_status" className="form-select" ref="edit_status">
             <option value="1">Inactive</option>
             <option value="2">Active</option>
             <option value="3">Canceled</option>
             <option value="4">Finished</option>
           </select>
 
-          <input type="submit" value="Update" />
+          <input className="btn btn-ok" type="submit" value="Update" />
         </form>
       </div>
     );

@@ -20,7 +20,7 @@ class OneTodo extends React.Component {
     const ELEMENT_CLASS = classnames(`section-element todo element-${this.props.todo.status}`, {
       'todo-late': moment(this.props.todo.date_expiration) < moment() && this.props.todo.status == 2
     });
-    const PRIORITY_CLASS = classnames(`priority priority-${this.props.todo.status}`);
+    const PRIORITY_CLASS = classnames(`priority priority-${this.props.todo.priority}`);
     const STATUS_CLASS = classnames(`status status-${this.props.todo.status}`);
     let dateCreated = moment(this.props.todo.date_created).fromNow();
     let dateExpiration = moment(this.props.todo.date_expiration).fromNow();
@@ -31,12 +31,14 @@ class OneTodo extends React.Component {
         <p>Created {dateCreated} and expires {dateExpiration}</p>
         <p className={PRIORITY_CLASS}>{priorities[this.props.todo.priority]}</p>
         <p className={STATUS_CLASS}>{status[this.props.todo.status]}</p>
-        <Link className="section-element-button" to={`/todos/${this.props.todo.id}`}>
-          <img src={`${cdnUrl}/img/right-arrow.png`} />
-        </Link>
-        <a className="section-element-button" onClick={this.deleteOneTodo}>
-          <img src={`${cdnUrl}/img/cancel_black.png`} />
-        </a>
+        <div>
+          <Link className="section-element-button" to={`/todos/${this.props.todo.id}`}>
+            <img src={`${cdnUrl}/img/right-arrow.png`} />
+          </Link>
+          <a className="section-element-button" onClick={this.deleteOneTodo}>
+            <img src={`${cdnUrl}/img/cancel_black.png`} />
+          </a>
+        </div>
       </div>
     );
   }

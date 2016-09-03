@@ -36,28 +36,28 @@ class NewTodo extends React.Component {
       <div className="todo-new">
         New Todo
 
-        <form onSubmit={this.saveTodo}>
-          <label htmlFor="new_name">Name</label>
-          <input type="text" id="new_name" ref="new_name" />
+        <form className="form" onSubmit={this.saveTodo}>
+          <label className="form-label" htmlFor="new_name">Name</label>
+          <input className="form-input" type="text" id="new_name" ref="new_name" />
 
-          <label htmlFor="new_description">Description</label>
-          <textarea id="new_description" ref="new_description"></textarea>
+          <label className="form-label" htmlFor="new_description">Description</label>
+          <textarea id="new_description" className="form-area" ref="new_description"></textarea>
 
-          <label htmlFor="new_date_created">Date created</label>
-          <input type="date" id="new_date_created" ref="new_date_created" />
+          <label className="form-label" htmlFor="new_date_created">Date created</label>
+          <input className="form-input" type="date" id="new_date_created" ref="new_date_created" />
 
-          <label htmlFor="new_date_expiration">Date expiration</label>
-          <input type="date" id="new_date_expiration" ref="new_date_expiration" />
+          <label className="form-label" htmlFor="new_date_expiration">Date expiration</label>
+          <input className="form-input" type="date" id="new_date_expiration" ref="new_date_expiration" />
 
-          <label htmlFor="new_priority">Priority</label>
-          <select id="new_priority" ref="new_priority">
+          <label className="form-label" htmlFor="new_priority">Priority</label>
+          <select id="new_priority" className="form-select" ref="new_priority">
             <option value="1">Low</option>
             <option value="2">Medium</option>
             <option value="3">High</option>
             <option value="4">Extreme</option>
           </select>
 
-          <input type="submit" value="Save" />
+          <input className="btn btn-ok"  type="submit" value="Save" />
         </form>
       </div>
     );

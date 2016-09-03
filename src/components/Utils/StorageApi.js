@@ -1,5 +1,5 @@
 import storage from 'key-storage';
-import INITIAL_STATE from '../../INITIAL_STATE'
+import INITIAL_STATE from '../../INITIAL_STATE';
 
 class StorageApi {
 

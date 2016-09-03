@@ -1,4 +1,4 @@
-.todo{
+.todo {
   @include flex(1 0 23%);
   margin: 10px 1%;
   box-sizing: border-box;
@@ -6,4 +6,32 @@
 
 .todo-late {
   background: red;
+}
+
+.filters {
+  @include flex();
+  margin: 5px;
+  padding: 10px;
+  border: 3px solid black;
+  @include rounded(5px);
+  .filter-title {
+    font-weight: bold;
+  }
+}
+
+.todo-edit, .todo-new {
+  width: 100%;
+}
+
+.form {
+  margin: 5px;
+  padding: 10px;
+  border: 3px solid black;
+  @include rounded(5px);
+  .form-label{
+    display: block;
+  }
+  .form-input, .form-select, .form-area{
+    padding: 5px;
+  }
 }
