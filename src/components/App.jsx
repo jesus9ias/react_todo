@@ -8,29 +8,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [],
       isOpenSidenav: false
     };
-    this.getAllTodos = this.getAllTodos.bind(this);
     this.openSidenav = this.openSidenav.bind(this);
     this.closeSidenav = this.closeSidenav.bind(this);
   }
 
   getChildContext() {
     return {
-      getAllTodos: this.getAllTodos,
-      todos: this.state.todos,
       openSidenav: this.openSidenav,
       closeSidenav: this.closeSidenav
     };
-  }
-
-  componentWillMount() {
-    this.getAllTodos();
-  }
-
-  getAllTodos(status_filter = [], priorities_filter = []) {
-    this.setState({todos: StorageApi.getTodos(status_filter, priorities_filter)});
   }
 
   openSidenav() {
@@ -45,7 +33,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Nav />
-        <SideNav isOpenSidenav={this.state.isOpenSidenav} todos={this.state.todos} />
+        <SideNav isOpenSidenav={this.state.isOpenSidenav} todos={[]} />
         {this.props.children}
       </div>
     );
@@ -57,8 +45,6 @@ App.propTypes = {
 };
 
 App.childContextTypes = {
-  getAllTodos: React.PropTypes.func,
-  todos: React.PropTypes.array,
   openSidenav: React.PropTypes.func,
   closeSidenav: React.PropTypes.func,
 };

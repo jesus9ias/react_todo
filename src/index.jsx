@@ -15,17 +15,30 @@ import {
   Redirect
 } from 'react-router';
 
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import theApp from './redux/reducers';
+import logger from './redux/middleware/logger';
+
+let store = applyMiddleware(
+  thunk,
+  logger
+)(createStore)(theApp);
+
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home} />
-      <Route path="todos" component={Todos}>
-        <Route path="new" components={{ new: NewTodo }} />
-        <Route path=":id" components={{ edit: EditTodo }} />
+  <Provider store={store} >
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Home} />
+        <Route path="todos" component={Todos}>
+          <Route path="new" components={{ new: NewTodo }} />
+          <Route path=":id" components={{ edit: EditTodo }} />
+        </Route>
+        <Route path="settings" component={Settings} />
       </Route>
-      <Route path="settings" component={Settings} />
-    </Route>
-    <Redirect from="*" to="/" />
-  </Router>,
+      <Redirect from="*" to="/" />
+    </Router>
+  </Provider>,
   document.getElementById('general')
 );

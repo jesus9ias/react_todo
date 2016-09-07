@@ -25,9 +25,13 @@
     "react-addons-shallow-compare": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-mega-sidenav": "0.0.1",
+    "react-redux": "^4.4.5",
     "react-router": "^2.2.2",
     "react-tap-event-plugin": "^1.0.0",
-    "react-virtualized": "^6.1.2"
+    "react-thunk": "^1.0.0",
+    "react-virtualized": "^6.1.2",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "babelify": "^6",
