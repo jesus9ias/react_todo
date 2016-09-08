@@ -47,7 +47,7 @@ class EditTodo extends React.Component {
       priority: edit_priority.value,
       status: edit_status.value,
     });
-    this.context.getAllTodos();
+    this.props.getAllTodos();
   }
 
   render() {
@@ -92,7 +92,7 @@ class EditTodo extends React.Component {
   }
 }
 
-EditTodo.contextTypes = {
+EditTodo.propTypes = {
   getAllTodos: React.PropTypes.func
 };
 

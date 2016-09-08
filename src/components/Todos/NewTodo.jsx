@@ -28,7 +28,7 @@ class NewTodo extends React.Component {
     this.refs.new_date_created.value = '';
     this.refs.new_date_expiration.value = '';
     this.refs.new_priority.value = 1;
-    this.context.getAllTodos();
+    this.props.getAllTodos();
   }
 
   render() {
@@ -64,7 +64,7 @@ class NewTodo extends React.Component {
   }
 }
 
-NewTodo.contextTypes = {
+NewTodo.propTypes = {
   getAllTodos: React.PropTypes.func
 };
 

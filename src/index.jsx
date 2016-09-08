@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import Home from './components/Home';
-import Todos from './components/Todos';
-import NewTodo from './components/Todos/NewTodo';
-import EditTodo from './components/Todos/EditTodo';
+import {
+  TodosContainer,
+  EditTodoContainer,
+  NewTodoContainer
+} from './components/Todos';
 import Settings from './components/Settings';
 
 import {
@@ -31,9 +33,9 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path="todos" component={Todos}>
-          <Route path="new" components={{ new: NewTodo }} />
-          <Route path=":id" components={{ edit: EditTodo }} />
+        <Route path="todos" component={TodosContainer}>
+          <Route path="new" components={{ new: NewTodoContainer }} />
+          <Route path=":id" components={{ edit: EditTodoContainer }} />
         </Route>
         <Route path="settings" component={Settings} />
       </Route>

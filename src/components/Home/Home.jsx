@@ -7,7 +7,7 @@ class Home extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getAllTodos();
+    this.props.getAllTodos([2], []);
   }
 
 

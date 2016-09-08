@@ -11,9 +11,13 @@ class Todos extends React.Component {
     this.getFilters = this.getFilters.bind(this);
   }
 
+  componentWillMount() {
+    this.props.getAllTodos();
+  }
+
   deleteOneTodo(index) {
     StorageApi.deleteTodo(index);
-    this.context.getAllTodos();
+    this.props.getAllTodos();
   }
 
   getFilters() {
