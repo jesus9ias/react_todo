@@ -6,6 +6,7 @@ var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var minify = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
+var buffer = require('vinyl-buffer');
 
 gulp.task('sass', function() {
   gulp.src(['./src/style.scss'])
@@ -32,6 +33,27 @@ gulp.task('build', function() {
   .bundle()
   .pipe(source('bundle.js'))
   .pipe(gulp.dest('./dist/dev/js/'));
+});
+
+gulp.task('production', function() {
+  process.env.NODE_ENV = 'production';
+  browserify({
+    entries: './src/index.jsx',
+    extensions: ['.jsx'],
+    debug: false
+  })
+  .transform(babelify)
+  .bundle()
+  .pipe(source('bundle.js'))
+  .pipe(buffer())
+  .pipe(uglify())
+  .pipe(gulp.dest('./dist/prod/js/'));
+  gulp.src(['./src/style.scss'])
+    .pipe(sass({
+      'include css': true,
+    }))
+    .pipe(minify())
+    .pipe(gulp.dest('./dist/prod/css/'));
 });
 
 gulp.task('serve', function() {
