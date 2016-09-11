@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from './Nav';
-import SideNav from './SideNav';
+import { SideNavContainer } from './SideNav';
 import StorageApi from './Utils/StorageApi';
 
 class App extends React.Component {
@@ -33,7 +33,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Nav />
-        <SideNav isOpenSidenav={this.state.isOpenSidenav} todos={[]} />
+        <SideNavContainer isOpenSidenav={this.state.isOpenSidenav} />
         {this.props.children}
       </div>
     );
