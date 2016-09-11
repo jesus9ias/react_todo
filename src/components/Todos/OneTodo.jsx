@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import classnames from 'classnames';
 import StorageApi from '../Utils/StorageApi';
-import { priorities, status, cdnUrl } from '../../CONFIG';
+import { priorities, status } from '../../CONFIG';
 import moment from 'moment';
 
 class OneTodo extends React.Component {
@@ -33,10 +33,10 @@ class OneTodo extends React.Component {
         <p className={STATUS_CLASS}>{status[this.props.todo.status]}</p>
         <div>
           <Link className="section-element-button" to={`/todos/${this.props.todo.id}`}>
-            <img src={`${cdnUrl}/img/right-arrow.png`} />
+            <img src={`${this.props.client_data.cdnUrl}/img/right-arrow.png`} />
           </Link>
           <a className="section-element-button" onClick={this.deleteOneTodo}>
-            <img src={`${cdnUrl}/img/cancel_black.png`} />
+            <img src={`${this.props.client_data.cdnUrl}/img/cancel_black.png`} />
           </a>
         </div>
       </div>

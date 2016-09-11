@@ -2,13 +2,14 @@ import Todos from './Todos';
 import EditTodo from './EditTodo';
 import NewTodo from './NewTodo';
 import { connect } from 'react-redux';
-import { todosActions } from '../../redux/actions';
+import { generalActions, todosActions } from '../../redux/actions';
 
-const allActions = Object.assign({}, todosActions);
+const allActions = Object.assign({}, generalActions, todosActions);
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos.todos
+    todos: state.todos.todos,
+    client_data: state.general.client_data
   };
 }
 

@@ -100,6 +100,7 @@ class Todos extends React.Component {
                   index={index}
                   todo={t}
                   deleteOneTodo={this.deleteOneTodo}
+                  client_data={this.props.client_data}
                 />
               );
             })

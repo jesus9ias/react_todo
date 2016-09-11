@@ -1,15 +1,18 @@
 import * as actions from '../allTypes';
-import * as IS from '../../INITIAL_STATE';
+import { baseUrl, cdnUrl } from '../../CONFIG';
 
 const initialState = {
-  loading: IS.loading
+  client_data: {
+    baseUrl,
+    cdnUrl
+  }
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actions.LOADING:
+    case actions.LOAD_CLIENT_DATA:
       return {
-        loading: action.data
+        client_data: action.data
       };
     default:
       return state;

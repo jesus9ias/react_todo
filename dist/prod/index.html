@@ -3,11 +3,17 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TODO App</title>
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
   </head>
   <body>
     <section id="general" class="general">
     </section>
-    <script type="text/javascript" src="js/bundle.js"></script>
+    <script>
+      window.__CLIENT_DATA__ = {
+        "baseUrl": "https://todos-app-12174.firebaseapp.com",
+        "cdnUrl": "https://todos-app-12174.firebaseapp.com/assets"
+      }
+    </script>
+    <script type="text/javascript" src="/js/bundle.js"></script>
   </body>
 </html>

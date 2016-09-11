@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { cdnUrl } from '../../CONFIG';
 
 class Nav extends React.Component {
   constructor(props) {
