@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import StorageApi from '../Utils/StorageApi';
 import OneTodo from './OneTodo';
 
 class Todos extends React.Component {
@@ -15,9 +14,8 @@ class Todos extends React.Component {
     this.props.getAllTodos();
   }
 
-  deleteOneTodo(index) {
-    StorageApi.deleteTodo(index);
-    this.props.getAllTodos();
+  deleteOneTodo(id) {
+    this.props.deleteTodo(id);
   }
 
   getFilters() {
@@ -97,7 +95,6 @@ class Todos extends React.Component {
               return (
                 <OneTodo
                   key={index}
-                  index={index}
                   todo={t}
                   deleteOneTodo={this.deleteOneTodo}
                   client_data={this.props.client_data}
@@ -112,7 +109,8 @@ class Todos extends React.Component {
 }
 
 Todos.propTypes = {
-  todos: React.PropTypes.array
+  todos: React.PropTypes.array,
+  deleteTodo: React.PropTypes.func
 };
 
 export default Todos;

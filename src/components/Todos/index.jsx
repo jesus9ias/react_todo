@@ -13,6 +13,14 @@ function mapStateToProps(state) {
   };
 }
 
+function editProps(state) {
+  return {
+    todos: state.todos.todos,
+    todo: state.todos.todo,
+    client_data: state.general.client_data
+  };
+}
+
 export const TodosContainer = connect(mapStateToProps, allActions)(Todos);
-export const EditTodoContainer = connect(mapStateToProps, allActions)(EditTodo);
+export const EditTodoContainer = connect(editProps, allActions)(EditTodo);
 export const NewTodoContainer = connect(mapStateToProps, allActions)(NewTodo);

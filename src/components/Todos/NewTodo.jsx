@@ -1,5 +1,4 @@
 import React from 'react';
-import StorageApi from '../Utils/StorageApi';
 
 class NewTodo extends React.Component {
   constructor(props) {
@@ -15,7 +14,7 @@ class NewTodo extends React.Component {
     const date_expiration = this.refs.new_date_expiration.value;
     const priority = this.refs.new_priority.value;
     const status = 2;
-    StorageApi.createTodo({
+    this.props.createTodo({
       name,
       description,
       date_created,
@@ -28,7 +27,6 @@ class NewTodo extends React.Component {
     this.refs.new_date_created.value = '';
     this.refs.new_date_expiration.value = '';
     this.refs.new_priority.value = 1;
-    this.props.getAllTodos();
   }
 
   render() {
@@ -65,7 +63,8 @@ class NewTodo extends React.Component {
 }
 
 NewTodo.propTypes = {
-  getAllTodos: React.PropTypes.func
+  getAllTodos: React.PropTypes.func,
+  createTodo: React.PropTypes.func
 };
 
 export default NewTodo;

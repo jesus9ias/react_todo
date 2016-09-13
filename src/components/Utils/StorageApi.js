@@ -42,13 +42,23 @@ class StorageApi {
     todo.id = this._updateNextId();
     todos.push(todo);
     this.setTodos(todos);
-    return todo.id;
+    return {
+      newId: todo.id,
+      todos: todos
+    };
   }
 
-  deleteTodo(index) {
+  deleteTodo(id) {
     let todos = this.getTodos();
+    let index;
+    todos.forEach((obj, i) => {
+      if (obj.id == id) {
+        index = i;
+      }
+    });
     todos.splice(index, 1);
     this.setTodos(todos);
+    return todos;
   }
 
   getTodo(id) {
@@ -60,14 +70,15 @@ class StorageApi {
     return todo[0];
   }
 
-  updateTodo(todo) {
+  updateTodo(id, todo) {
     let todos = this.getTodos();
     todos.forEach((obj, i) => {
-      if (obj.id == todo.id) {
+      if (obj.id == id) {
         todos[i] = todo;
         this.setTodos(todos);
       }
     });
+    return todos;
   }
 
   getKey(key) {

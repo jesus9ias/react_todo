@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import classnames from 'classnames';
-import StorageApi from '../Utils/StorageApi';
 import { priorities, status } from '../../CONFIG';
 import moment from 'moment';
 
@@ -13,7 +12,7 @@ class OneTodo extends React.Component {
   }
 
   deleteOneTodo() {
-    this.props.deleteOneTodo(this.props.index);
+    this.props.deleteOneTodo(this.props.todo.id);
   }
 
   render() {

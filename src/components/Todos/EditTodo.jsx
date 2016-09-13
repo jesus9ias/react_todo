@@ -1,5 +1,4 @@
 import React from 'react';
-import StorageApi from '../Utils/StorageApi';
 
 class EditTodo extends React.Component {
   constructor(props) {
@@ -8,24 +7,27 @@ class EditTodo extends React.Component {
     this.updateTodo = this.updateTodo.bind(this);
   }
 
-  componentDidMount() {
-    this.SetForm(this.props.params.id);
+  componentWillMount() {
+    this.props.editTodo(this.props.params.id);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.params.id != this.props.params.id) {
-      this.SetForm(nextProps.params.id);
+      this.props.editTodo(nextProps.params.id);
     }
   }
 
-  SetForm(id) {
-    const todo = StorageApi.getTodo(id);
-    this.refs.edit_name.value = todo.name;
-    this.refs.edit_description.value = todo.description;
-    this.refs.edit_date_created.value = todo.date_created;
-    this.refs.edit_date_expiration.value = todo.date_expiration;
-    this.refs.edit_priority.value = todo.priority;
-    this.refs.edit_status.value = todo.status;
+  componentDidUpdate() {
+    this.SetForm();
+  }
+
+  SetForm() {
+    this.refs.edit_name.value = this.props.todo.name;
+    this.refs.edit_description.value = this.props.todo.description;
+    this.refs.edit_date_created.value = this.props.todo.date_created;
+    this.refs.edit_date_expiration.value = this.props.todo.date_expiration;
+    this.refs.edit_priority.value = this.props.todo.priority;
+    this.refs.edit_status.value = this.props.todo.status;
   }
 
   updateTodo(e) {
@@ -38,7 +40,7 @@ class EditTodo extends React.Component {
       edit_priority,
       edit_status
     } = this.refs;
-    StorageApi.updateTodo({
+    this.props.updateTodo(this.props.params.id, {
       id: this.props.params.id,
       name: edit_name.value,
       description: edit_description.value,
@@ -47,7 +49,6 @@ class EditTodo extends React.Component {
       priority: edit_priority.value,
       status: edit_status.value,
     });
-    this.props.getAllTodos();
   }
 
   render() {
@@ -93,7 +94,8 @@ class EditTodo extends React.Component {
 }
 
 EditTodo.propTypes = {
-  getAllTodos: React.PropTypes.func
+  getAllTodos: React.PropTypes.func,
+  updateTodo: React.PropTypes.func
 };
 
 export default EditTodo;
