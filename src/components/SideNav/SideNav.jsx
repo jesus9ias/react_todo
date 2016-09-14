@@ -26,7 +26,7 @@ class SideNav extends React.Component {
         title="React TODO"
         items={[]}
         open={this.props.isOpenSidenav}
-        close={this.context.closeSidenav}
+        close={this.props.close_sidenav}
         useClose={true}
         backdrop={true}
         orientation={'left'}
@@ -45,11 +45,8 @@ class SideNav extends React.Component {
 
 SideNav.propTypes = {
   isOpenSidenav: React.PropTypes.bool.isRequired,
+  close_sidenav: React.PropTypes.func.isRequired,
   todos: React.PropTypes.array
-};
-
-SideNav.contextTypes = {
-  closeSidenav: React.PropTypes.func,
 };
 
 export default SideNav;

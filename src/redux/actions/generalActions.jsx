@@ -12,5 +12,11 @@ export default {
       };
     }
     dispatch({ type: actions.LOAD_CLIENT_DATA, data: client_data });
+  },
+  open_sidenav: () => (dispatch) => {
+    dispatch({ type: actions.OPEN_SIDENAV, data: true });
+  },
+  close_sidenav: () => (dispatch) => {
+    dispatch({ type: actions.CLOSE_SIDENAV, data: false });
   }
 };

@@ -1,26 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router';
+import Nav from './Nav';
+import { connect } from 'react-redux';
+import { generalActions } from '../../redux/actions';
 
-class Nav extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const allActions = Object.assign({}, generalActions);
 
-  render() {
-    return (
-      <nav className="nav">
-        <button
-          className="btn btn-icon btn-menu"
-          onClick={this.context.openSidenav}>
-        </button>
-        <Link to={`/`} className="nav-title">React TODOS</Link>
-      </nav>
-    );
-  }
+function mapStateToProps(state) {
+  return {
+    isOpenSidenav: state.general.isOpenSidenav
+  };
 }
 
-Nav.contextTypes = {
-  openSidenav: React.PropTypes.func,
-};
-
-export default Nav;
+export const NavContainer = connect(mapStateToProps, allActions)(Nav);

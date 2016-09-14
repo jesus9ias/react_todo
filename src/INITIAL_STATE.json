@@ -2,5 +2,6 @@
   "laoding": false,
   "todoNextId": 1,
   "todos": [],
-  "todo": {}
+  "todo": {},
+  "isOpenSidenav": false
 }
