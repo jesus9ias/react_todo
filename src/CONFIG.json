@@ -1,7 +1,6 @@
 {
   "baseUrl": "http://localhost:3030",
   "cdnUrl": "http://localhost:3030/assets",
-  "dbUrl": "https://todos-app-12174.firebaseio.com/",
   "status": {
     "1": "Inactive",
     "2": "Active",

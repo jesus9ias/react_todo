@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
       };
     case actions.CREATE_ONE_TODO:
       return {
-        todos: action.todos,
+        todos: state.todos,
         todo: state.todo
       };
     default:

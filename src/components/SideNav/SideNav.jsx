@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import {MegaSidenav, SidenavItem} from 'react-mega-sidenav';
-import StorageApi from '../Utils/StorageApi';
+import FirebaseApi from '../Utils/FirebaseApi';
 
 class SideNav extends React.Component {
 
@@ -13,11 +13,11 @@ class SideNav extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({ todos: StorageApi.useFilters(this.props.todos, [2], [3,4]) });
+    this.setState({ todos: FirebaseApi.useFilters(this.props.todos, [2], [3,4]) });
   }
 
   componentWillReceiveProps() {
-    this.setState({ todos: StorageApi.useFilters(this.props.todos, [2], [3,4]) });
+    this.setState({ todos: FirebaseApi.useFilters(this.props.todos, [2], [3,4]) });
   }
 
   render() {
