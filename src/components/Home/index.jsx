@@ -6,7 +6,7 @@ import { Map, fromJS, toJS } from 'immutable';
 const allActions = Object.assign({}, todosActions);
 
 function mapStateToProps(state) {
-  let todos = state.getIn(['todos', 'todos']);
+  const todos = state.getIn(['todos', 'todos']);
   return {
     todosCount: todos.size
   };

@@ -40,16 +40,7 @@ class FirebaseApi {
   }
 
   deleteTodo(id) {
-    let todos = this.getTodos();
-    let index;
-    todos.forEach((obj, i) => {
-      if (obj.id == id) {
-        index = i;
-      }
-    });
-    todos.splice(index, 1);
-    this.setTodos(todos);
-    return todos;
+    return DB.ref(`todos/${id}`).remove();
   }
 
   updateTodo(id, todo) {

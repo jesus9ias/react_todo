@@ -7,10 +7,10 @@ import { generalActions, todosActions } from '../../redux/actions';
 const allActions = Object.assign({}, generalActions, todosActions);
 
 function allProps(state) {
-  let todos = state.getIn(['todos', 'todos']);
+  const todos = state.getIn(['todos', 'todos']);
   let todosObj = {};
   let todosArr = [];
-  if (todos.length != 0) {
+  if (todos.size) {
     todosObj = todos.toObject();
     todosArr = Object.keys(todosObj).map((k, i) => {
       return todosObj[k];
@@ -23,7 +23,7 @@ function allProps(state) {
 }
 
 function editProps(state) {
-  let todo = state.getIn(['todos', 'todo']);
+  const todo = state.getIn(['todos', 'todo']);
   let todoObj = {};
   let todoArr = [];
   if (todo.size) {

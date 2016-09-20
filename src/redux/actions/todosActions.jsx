@@ -27,8 +27,10 @@ export default {
     });
   },
   deleteTodo: (id) => (dispatch) => {
-    let todos =  FirebaseApi.deleteTodo(id);
-    dispatch({ type: actions.DELETE_ONE_TODO, todos: todos });
+    let todoPromise =  FirebaseApi.deleteTodo(id);
+    todoPromise.then(() => {
+      dispatch({ type: actions.DELETE_ONE_TODO, id: id });
+    });
   },
   createTodo: (todo) => (dispatch) => {
     let newId =  FirebaseApi.createTodo(todo);

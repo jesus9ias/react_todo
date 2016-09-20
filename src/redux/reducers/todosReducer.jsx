@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case actions.UPDATE_ONE_TODO:
       return state.update('todos', value => value.set(action.id, action.todo));
     case actions.DELETE_ONE_TODO:
-      return state.update('todos', value => action.todos);
+      return state.update('todos', value => value.remove(action.id));
     case actions.CREATE_ONE_TODO:
       return state.update('todos', value => value.set(action.todo.id, action.todo));
     default:
