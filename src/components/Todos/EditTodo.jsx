@@ -94,7 +94,6 @@ class EditTodo extends React.Component {
 }
 
 EditTodo.propTypes = {
-  getAllTodos: React.PropTypes.func,
   updateTodo: React.PropTypes.func
 };
 

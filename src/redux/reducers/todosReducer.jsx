@@ -1,38 +1,24 @@
+import { Map, fromJS } from 'immutable';
 import * as actions from '../allTypes';
 import * as IS from '../../INITIAL_STATE';
 
-const initialState = {
-  todos: IS.todos,
-  todo: IS.todo
-};
+const initialState = Map({
+  todos: [],
+  todo: {}
+});
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actions.GET_ALL_TODOS:
-      return {
-        todos: action.todos,
-        todo: state.todo
-      };
+      return state.update('todos', value => Map(action.todos));
     case actions.EDIT_ONE_TODO:
-      return {
-        todos: state.todos,
-        todo: action.todo
-      };
+      return state.update('todo', value => Map(action.todo));
     case actions.UPDATE_ONE_TODO:
-      return {
-        todos: action.todos,
-        todo: action.todo
-      };
+      return state.update('todos', value => value.set(action.id, action.todo));
     case actions.DELETE_ONE_TODO:
-      return {
-        todos: action.todos,
-        todo: state.todo
-      };
+      return state.update('todos', value => action.todos);
     case actions.CREATE_ONE_TODO:
-      return {
-        todos: state.todos,
-        todo: state.todo
-      };
+      return state.update('todos', value => value.set(action.todo.id, action.todo));
     default:
       return state;
   }

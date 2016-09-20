@@ -5,9 +5,19 @@ import { todosActions, generalActions } from '../../redux/actions';
 const allActions = Object.assign({}, generalActions, todosActions);
 
 function mapStateToProps(state) {
+  let todos = state.getIn(['todos', 'todos']);
+  let todosObj = {};
+  let todosArr = [];
+  if (todos.length != 0) {
+    todosObj = todos.toObject();
+    todosArr = Object.keys(todosObj).map((k, i) => {
+      return todosObj[k];
+    });
+  }
+
   return {
-    todos: state.todos.todos,
-    isOpenSidenav: state.general.isOpenSidenav
+    todos: todosArr,
+    isOpenSidenav: state.getIn(['general', 'isOpenSidenav'])
   };
 }
 

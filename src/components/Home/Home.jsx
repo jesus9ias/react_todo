@@ -19,7 +19,7 @@ class Home extends React.Component {
         <div className="section-block home">
           <Link className="section-element home-element" to={`todos`}>
             <h2 className="section-element-title">View Todos</h2>
-            <p className="section-element-subtitle">{this.props.todos.length} active TODOS</p>
+            <p className="section-element-subtitle">{this.props.todosCount} active TODOS</p>
           </Link>
           <Link className="section-element home-element" to={`settings`}>
             <h2 className="section-element-title">View Settings</h2>
@@ -31,7 +31,7 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  todos: React.PropTypes.array
+  todosCount: React.PropTypes.number
 };
 
 export default Home;

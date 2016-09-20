@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable';
 import general from './generalReducer';
 import todos from './todosReducer';
 

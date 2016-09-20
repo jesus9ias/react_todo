@@ -7,11 +7,9 @@ export default {
     let todosPromise =  FirebaseApi.getTodos(status_filter, priorities_filter);
     todosPromise.then((todos) => {
       if (todos) {
-        const todosArr = Object.keys(todos).map((k) => {
-          todos[k].id = k;
-          return todos[k];
-        });
-        dispatch({ type: actions.GET_ALL_TODOS, todos: todosArr });
+        dispatch({ type: actions.GET_ALL_TODOS, todos: todos });
+      } else {
+        dispatch({ type: actions.GET_ALL_TODOS, todos: [] });
       }
     });
   },
@@ -22,8 +20,11 @@ export default {
     });
   },
   updateTodo: (id, todo) => (dispatch) => {
-    let todos = FirebaseApi.updateTodo(id, todo);
-    dispatch({ type: actions.UPDATE_ONE_TODO, todos: todos, todo: todo });
+    let todoPromise = FirebaseApi.updateTodo(id, todo);
+    todoPromise.then(() => {
+      dispatch({ type: actions.UPDATE_ONE_TODO, id: id, todo: todo });
+      dispatch({ type: actions.EDIT_ONE_TODO, todo: todo });
+    });
   },
   deleteTodo: (id) => (dispatch) => {
     let todos =  FirebaseApi.deleteTodo(id);

@@ -19,9 +19,9 @@ class FirebaseApi {
   }
 
   useFilters(todos, status_filter = [], priorities_filter = []) {
-    todos = todos.filter((obj, i) => {
+    /*todos = todos.filter((obj, i) => {
       return status_filter.indexOf(parseInt(obj.status)) != -1 || priorities_filter.indexOf(parseInt(obj.priority)) != -1;
-    });
+    });*/
     return todos;
   }
 
@@ -33,7 +33,8 @@ class FirebaseApi {
 
   createTodo(todo) {
     let newTodo = DB.ref('todos').push();
-    let newId = newTodo.getKey()
+    let newId = newTodo.getKey();
+    todo.id = newId;
     newTodo.set(todo);
     return newId;
   }
@@ -52,14 +53,7 @@ class FirebaseApi {
   }
 
   updateTodo(id, todo) {
-    let todos = this.getTodos();
-    todos.forEach((obj, i) => {
-      if (obj.id == id) {
-        todos[i] = todo;
-        this.setTodos(todos);
-      }
-    });
-    return todos;
+    return DB.ref(`todos/${id}`).update(todo);
   }
 
   getKey(key) {

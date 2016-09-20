@@ -6,7 +6,7 @@ const allActions = Object.assign({}, generalActions);
 
 function mapStateToProps(state) {
   return {
-    isOpenSidenav: state.general.isOpenSidenav
+    isOpenSidenav: state.getIn(['general', 'isOpenSidenav'])
   };
 }
 
