@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 class NewTodo extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class NewTodo extends React.Component {
     event.preventDefault();
     const name = this.refs.new_name.value;
     const description = this.refs.new_description.value;
-    const date_created = this.refs.new_date_created.value;
+    const date_created = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss");
     const date_expiration = this.refs.new_date_expiration.value;
     const priority = this.refs.new_priority.value;
     const status = 2;
@@ -24,7 +25,6 @@ class NewTodo extends React.Component {
     });
     this.refs.new_name.value = '';
     this.refs.new_description.value = '';
-    this.refs.new_date_created.value = '';
     this.refs.new_date_expiration.value = '';
     this.refs.new_priority.value = 1;
   }
@@ -40,9 +40,6 @@ class NewTodo extends React.Component {
 
           <label className="form-label" htmlFor="new_description">Description</label>
           <textarea id="new_description" className="form-area" ref="new_description"></textarea>
-
-          <label className="form-label" htmlFor="new_date_created">Date created</label>
-          <input className="form-input" type="date" id="new_date_created" ref="new_date_created" />
 
           <label className="form-label" htmlFor="new_date_expiration">Date expiration</label>
           <input className="form-input" type="date" id="new_date_expiration" ref="new_date_expiration" />

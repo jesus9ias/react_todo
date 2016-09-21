@@ -65,7 +65,8 @@ class EditTodo extends React.Component {
           <input className="form-input" type="input" id="edit_description" ref="edit_description" />
 
           <label className="form-label" htmlFor="edit_date_created">Date created</label>
-          <input className="form-input" type="date" id="edit_date_created" ref="edit_date_created" />
+          <p>{this.props.todo.date_created}</p>
+          <input className="form-input" type="text" disabled id="edit_date_created" ref="edit_date_created" />
 
           <label className="form-label" htmlFor="edit_date_expiration">Date expiration</label>
           <input className="form-input" type="date" id="edit_date_expiration" ref="edit_date_expiration" />
