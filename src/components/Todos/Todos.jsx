@@ -57,7 +57,7 @@ class Todos extends React.Component {
       priorities_filter.push(4);
     }
 
-    this.props.getAllTodos(status_filter, priorities_filter);
+    this.props.filterTodos(status_filter, priorities_filter);
   }
 
   render() {

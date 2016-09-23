@@ -7,3 +7,4 @@ export const CREATE_ONE_TODO = 'todos:CREATE_ONE';
 export const DELETE_ONE_TODO = 'todos:DELETE_ONE';
 export const EDIT_ONE_TODO = 'todos:EDIT_ONE';
 export const UPDATE_ONE_TODO = 'todos:UPDATE_ONE';
+export const FIlTER_TODOS = 'todos:FIlTER_ALL';

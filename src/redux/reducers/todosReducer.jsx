@@ -4,7 +4,11 @@ import * as IS from '../../INITIAL_STATE';
 
 const initialState = Map({
   todos: [],
-  todo: {}
+  todo: {},
+  filters: {
+    status: [],
+    priorities: []
+  }
 });
 
 export default (state = initialState, action) => {
@@ -19,6 +23,11 @@ export default (state = initialState, action) => {
       return state.update('todos', value => value.remove(action.id));
     case actions.CREATE_ONE_TODO:
       return state.update('todos', value => value.set(action.todo.id, action.todo));
+    case actions.FIlTER_TODOS:
+      return state.update('filters', value => Map({
+        status: action.status,
+        priorities: action.priorities
+      }));
     default:
       return state;
   }

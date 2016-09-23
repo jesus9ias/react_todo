@@ -3,8 +3,8 @@ import * as actions from '../allTypes';
 import FirebaseApi from '../../components/Utils/FirebaseApi';
 
 export default {
-  getAllTodos: (status_filter, priorities_filter) => (dispatch) => {
-    let todosPromise =  FirebaseApi.getTodos(status_filter, priorities_filter);
+  getAllTodos: () => (dispatch) => {
+    let todosPromise =  FirebaseApi.getTodos();
     todosPromise.then((todos) => {
       if (todos) {
         dispatch({ type: actions.GET_ALL_TODOS, todos: todos });
@@ -36,6 +36,9 @@ export default {
     let newId =  FirebaseApi.createTodo(todo);
     todo.id = newId;
     dispatch({ type: actions.CREATE_ONE_TODO, todo: todo });
+  },
+  filterTodos: (status, priorities) => (dispatch) => {
+    dispatch({ type: actions.FIlTER_TODOS, status, priorities });
   }
 };
 

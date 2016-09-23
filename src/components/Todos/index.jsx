@@ -16,6 +16,13 @@ function allProps(state) {
       return todosObj[k];
     });
   }
+  const filters = state.getIn(['todos', 'filters']);
+  if (filters.size && (filters.get('status').length > 0 || filters.get('priorities').length > 0)) {
+    let filtersObj = filters.toObject();
+    todosArr = todosArr.filter((obj, i) => {
+      return filtersObj.status.indexOf(parseInt(obj.status)) != -1 || filtersObj.priorities.indexOf(parseInt(obj.priority)) != -1;
+    });
+  }
   return {
     todos: todosArr,
     client_data: state.getIn(['general', 'client_data'])
