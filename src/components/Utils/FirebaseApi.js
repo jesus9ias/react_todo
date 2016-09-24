@@ -8,21 +8,10 @@ var DB = firebase.database();
 
 class FirebaseApi {
 
-  constructor() {
-
-  }
-
   getTodos(status_filter = [], priorities_filter = []) {
     return DB.ref('todos').once('value').then((snapshot) => {
       return snapshot.val();
     });
-  }
-
-  useFilters(todos, status_filter = [], priorities_filter = []) {
-    /*todos = todos.filter((obj, i) => {
-      return status_filter.indexOf(parseInt(obj.status)) != -1 || priorities_filter.indexOf(parseInt(obj.priority)) != -1;
-    });*/
-    return todos;
   }
 
   getTodo(id) {
