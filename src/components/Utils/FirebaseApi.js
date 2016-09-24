@@ -14,6 +14,13 @@ class FirebaseApi {
     });
   }
 
+  useFilters(todos, status_filter = [], priorities_filter = []) {
+    /*todos = todos.filter((obj, i) => {
+      return status_filter.indexOf(parseInt(obj.status)) != -1 || priorities_filter.indexOf(parseInt(obj.priority)) != -1;
+    });*/
+    return todos;
+  }
+
   getTodo(id) {
     return DB.ref(`todos/${id}/`).once('value').then((snapshot) => {
       return snapshot.val();
