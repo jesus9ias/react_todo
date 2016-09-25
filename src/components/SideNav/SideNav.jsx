@@ -5,21 +5,6 @@ import FirebaseApi from '../Utils/FirebaseApi';
 
 class SideNav extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: []
-    };
-  }
-
-  componentWillMount() {
-    this.setState({ todos: FirebaseApi.useFilters(this.props.todos, [2], [3,4]) });
-  }
-
-  componentWillReceiveProps() {
-    this.setState({ todos: FirebaseApi.useFilters(this.props.todos, [2], [3,4]) });
-  }
-
   render() {
     return (
       <MegaSidenav
@@ -32,7 +17,7 @@ class SideNav extends React.Component {
         orientation={'left'}
       >
       {
-        this.state.todos.map((t, index) => {
+        this.props.todos.map((t, index) => {
           return (
             <Link key={index} className="sidenav-link" to={`/todos/${t.id}`}>{t.name}</Link>
           );
