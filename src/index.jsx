@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
+import Login from './components/Login';
+import IsLogued from './components/Utils/IsLogued';
 import Home from './components/Home';
 import {
   TodosContainer,
@@ -35,7 +37,7 @@ store.dispatch(generalActions.load_client_data());
 ReactDOM.render(
   <Provider store={store} >
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
+      <Route path="/" component={IsLogued(App)}>
         <IndexRoute component={Home} />
         <Route path="todos" component={TodosContainer}>
           <Route path="new" components={{ new: NewTodoContainer }} />
@@ -43,6 +45,7 @@ ReactDOM.render(
         </Route>
         <Route path="settings" component={Settings} />
       </Route>
+      <Route path="login" component={Login} />
       <Redirect from="*" to="/" />
     </Router>
   </Provider>,
