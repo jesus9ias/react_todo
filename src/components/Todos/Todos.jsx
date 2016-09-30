@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import OneTodo from './OneTodo';
+import {DB, allTodos, oneTodo} from '../Utils/firebaseConection';
 
 class Todos extends React.Component {
 
@@ -12,6 +13,18 @@ class Todos extends React.Component {
 
   componentWillMount() {
     this.props.getAllTodos();
+
+    allTodos.on('child_removed', () => {
+      this.props.getAllTodos();
+    });
+
+    allTodos.on('child_added', () => {
+      this.props.getAllTodos();
+    });
+
+    allTodos.on('child_changed', () => {
+      this.props.getAllTodos();
+    });
   }
 
   deleteOneTodo(id) {

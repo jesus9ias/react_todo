@@ -1,27 +1,23 @@
 import storage from 'key-storage';
 import INITIAL_STATE from '../../INITIAL_STATE';
-import fbConfig from '../../fbConfig';
-import firebase from 'firebase';
-
-firebase.initializeApp(fbConfig);
-var DB = firebase.database();
+import {DB, allTodos, oneTodo} from './firebaseConection';
 
 class FirebaseApi {
 
   getTodos(status_filter = [], priorities_filter = []) {
-    return DB.ref('todos').once('value').then((snapshot) => {
+    return allTodos.once('value').then((snapshot) => {
       return snapshot.val();
     });
   }
 
   getTodo(id) {
-    return DB.ref(`todos/${id}/`).once('value').then((snapshot) => {
+    return oneTodo(id).once('value').then((snapshot) => {
       return snapshot.val();
     });
   }
 
   createTodo(todo) {
-    let newTodo = DB.ref('todos').push();
+    let newTodo = allTodos.push();
     let newId = newTodo.getKey();
     todo.id = newId;
     newTodo.set(todo);
@@ -29,11 +25,11 @@ class FirebaseApi {
   }
 
   deleteTodo(id) {
-    return DB.ref(`todos/${id}`).remove();
+    return oneTodo(id).remove();
   }
 
   updateTodo(id, todo) {
-    return DB.ref(`todos/${id}`).update(todo);
+    return oneTodo(id).update(todo);
   }
 
   getKey(key) {
